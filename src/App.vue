@@ -10,15 +10,14 @@
         @scroll="handleScroll"
         :style="{ marginRight: isSidebarOpen ? '16rem' : '5rem' }"
       >
-        <div class="container mx-auto">
-          
+      <div class="container mx-auto">
+          <Breadcrumb/> 
           <RouterView/>
         </div>
       </main>
     </div>
   </div> 
-
-  <!-- <Login/> -->
+ 
 
 </template>
 
@@ -27,8 +26,7 @@ import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { RouterView } from 'vue-router'
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Navbar from '@/components/navbar/Navbar.vue'
-import Dashboard from '@/views/dashboard/Dashboard.vue'
-import Login from '@/views/login/Login.vue'
+import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue' 
 
 const isSidebarOpen = ref(true)
 const hasScrolled = ref(false)
