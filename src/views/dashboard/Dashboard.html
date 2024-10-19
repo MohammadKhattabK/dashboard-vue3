@@ -1,0 +1,32 @@
+<div>
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Dashboard</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-6"   v-for="stat in stats" 
+        :key="stat.title"  >
+            <div class="flex items-center">
+              <div :class="[`${stat.color} p-3 rounded-full`]">
+                <component :is="stat.icon" class="h-8 w-8 text-white" />
+              </div>
+              <div class="mr-4">
+                <h2 class="text-sm font-medium text-gray-600">{{ stat.title }}</h2>
+                <p class="text-2xl font-semibold text-gray-800">{{ stat.value }}</p>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Revenue Chart</h3>
+            <div class="h-64 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <p class="text-gray-500 dark:text-gray-400">Revenue Chart Placeholder</p>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Order Statistics</h3>
+            <div class="h-64 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <p class="text-gray-500 dark:text-gray-400">Order Statistics Placeholder</p>
+            </div>
+        </div>
+    </div>
+</div>
