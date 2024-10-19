@@ -9,12 +9,7 @@ import ChatIcon from '@/assets/icons/chat.svg'
 import GroupChatIcon from '@/assets/icons/group-chat.svg'
 import SettingsIcon from '@/assets/icons/settings.svg'
 import LogoutIcon from '@/assets/icons/logout.svg'
-import PlusIcon from '@/assets/icons/plus.svg'
-import LayersIcon from '@/assets/icons/layers.svg'
-import DraftIcon from '@/assets/icons/draft.svg'
-import InvisibleIcon from '@/assets/icons/invisible.svg'
-import RejectedIcon from '@/assets/icons/rejected.svg'
-import MailIcon from '@/assets/icons/mail.svg'
+import PlusIcon from '@/assets/icons/plus.svg' 
 import FilterIcon from '@/assets/icons/filter.svg'
 import FigmaIcon from '@/assets/icons/figma.svg'
 import SketchIcon from '@/assets/icons/sketch.svg'
@@ -25,13 +20,12 @@ import ChevronLeftIcon from '@/assets/icons/chevron-left.svg'
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import imageItem from '@/assets/img/background-login.jpg'
 
-const status = [
-  { name: 'Published', icon: LayersIcon },
-  { name: 'Draft', icon: DraftIcon },
-  { name: 'Hidden', icon: InvisibleIcon },
-  { name: 'Rejected', icon: RejectedIcon },
-  { name: 'Under Review', icon: MailIcon },
-]
+import { ref } from 'vue'
+
+const tabLabels = ['قائمة الزبائن', 'المدفوعات', 'المستحقات']
+
+const activeTab = ref(0)
+ 
 
 const products = [
   {
@@ -40,7 +34,7 @@ const products = [
     imageUrl: imageItem,
     price: 20,
     downloaded: 793,
-    rating: 4.9, 
+    rating: 4.9,
     createdAt: '12/01/22',
   },
   {
@@ -49,7 +43,7 @@ const products = [
     imageUrl: imageItem,
     price: 24,
     downloaded: 34,
-    rating: 4.4, 
+    rating: 4.4,
     createdAt: '10/01/22',
   },
   {
@@ -58,7 +52,7 @@ const products = [
     imageUrl: imageItem,
     price: 16,
     downloaded: 896,
-    rating: 4.6, 
+    rating: 4.6,
     createdAt: '01/01/22',
   },
   {
@@ -67,7 +61,7 @@ const products = [
     imageUrl: imageItem,
     price: 38,
     downloaded: 194,
-    rating: 4.6, 
+    rating: 4.6,
     createdAt: '04/01/22',
   },
   {
@@ -76,10 +70,12 @@ const products = [
     imageUrl: imageItem,
     price: 22,
     downloaded: 404,
-    rating: 4.3, 
+    rating: 4.3,
     createdAt: '12/12/21',
   },
 ]
+
+
 </script>
 
 <template src="./Customer.html"></template>

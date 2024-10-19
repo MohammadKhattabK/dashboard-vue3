@@ -1,10 +1,4 @@
 <script lang="ts" setup>
-interface BreadcrumbItem {
-  text: string
-  href?: string
-  current?: boolean
-}
-
 const props = defineProps<{
   pageName: string
 }>()

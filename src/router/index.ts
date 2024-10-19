@@ -7,41 +7,49 @@ const route = [
     path: '/',
     name: 'Dashboard',
     component: Dashboard,
+    meta: { title: 'لوحة التحكم' }
   },
   {
     path: '/sales',
     name: 'Sales',
     component: Dashboard,
+    meta: { title: 'المبيعات' }
   },
   {
     path: '/buy',
     name: 'Buy',
     component: Dashboard,
+    meta: { title: 'المشتريات' }
   },
   {
     path: '/customer',
     name: 'Customer',
     component: Customer,
+    meta: { title: 'الزبائن' }
   },
   {
     path: '/supplier',
     name: 'Supplier',
     component: Dashboard,
+    meta: { title: 'الموردين' }
   },
   {
     path: '/items',
     name: 'Items',
     component: Dashboard,
+    meta: { title: 'المنتجات' }
   },
   {
     path: '/reports',
     name: 'Reports',
     component: Dashboard,
+    meta: { title: 'التقارير' }
   },
   {
     path: '/settings',
     name: 'Settings',
     component: Dashboard,
+    meta: { title: 'الإعدادات' }
   },
 
 ]
