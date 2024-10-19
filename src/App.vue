@@ -11,7 +11,7 @@
         :style="{ marginRight: isSidebarOpen ? '16rem' : '5rem' }"
       >
       <div class="container mx-auto">
-          <Breadcrumb/> 
+        <Breadcrumb :pageName="currentPageName" /> 
           <RouterView/>
         </div>
       </main>
@@ -22,11 +22,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { RouterView } from 'vue-router'
+import { onMounted, onUnmounted, ref, watch,computed } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Navbar from '@/components/navbar/Navbar.vue'
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb.vue' 
+
+const route = useRoute()
 
 const isSidebarOpen = ref(true)
 const hasScrolled = ref(false)
@@ -62,6 +64,10 @@ watch(isSidebarOpen, () => {
   if (mainContent.value) {
     mainContent.value.style.marginRight = isSidebarOpen.value ? '16rem' : '0'
   }
+})
+
+const currentPageName = computed(() => { 
+  return route.meta.title || route.name || 'لوحة التحكم'   
 })
  
 </script>

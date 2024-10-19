@@ -11,4 +11,4 @@ const isProfileOpen = ref(false)
 
 <template src="./Navbar.html"></template>
 
-<style src="./Navbar.css" ></style>
+<style src="./Navbar.css"></style>
