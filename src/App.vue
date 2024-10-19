@@ -12,20 +12,23 @@
       >
         <div class="container mx-auto">
           
-          <Dashboard/>
           <RouterView/>
         </div>
       </main>
     </div>
   </div> 
+
+  <!-- <Login/> -->
+
 </template>
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { RouterView } from 'vue-router'
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Navbar from '@/components/navbar/Navbar.vue'
 import Dashboard from '@/views/dashboard/Dashboard.vue'
-import { RouterView } from 'vue-router'
+import Login from '@/views/login/Login.vue'
 
 const isSidebarOpen = ref(true)
 const hasScrolled = ref(false)
