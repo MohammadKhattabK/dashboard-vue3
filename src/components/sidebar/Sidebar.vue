@@ -6,6 +6,7 @@ import ProfileIcon from '@/assets/icons/profile.svg'
 import SettingsIcon from '@/assets/icons/settings.svg'
 import ReportsIcon from '@/assets/icons/graph.svg'
 import ProductIcon from '@/assets/icons/shopping-bag.svg'
+import ChevronLeftIcon from '@/assets/icons/arrow-left.svg'
 
 defineProps<{
   isOpen: boolean
