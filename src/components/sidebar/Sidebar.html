@@ -1,0 +1,33 @@
+<aside :class="{ 'w-64': isOpen, 'w-16': !isOpen }"
+    class="bg-white h-screen flex flex-col py-4 px-6 border-r border-gray-200 fixed top-0 right-0 z-50 transition-all duration-300">
+    <!-- Close Sidebar Button -->
+    <button class="absolute -left-2.5 top-5 flex justify-center items-center bg-gray-100 rounded border border-gray-200"
+        @click="$emit('close-sidebar')">
+        <ChevronLeftIcon class="w-6 h-6 text-gray-400" :class="{ 'rotate-180': !isOpen }" />
+    </button>
+
+    <!-- Logo -->
+    <a href="#" v-if="isOpen">
+        <img src="../assets/img/logo.png" alt="" class="w-24" />
+    </a>
+
+    <!-- Scrollable Menu -->
+    <ul
+        class="flex flex-col overflow-hidden hover:overflow-y-auto transition-all hover:duration-300 gap-y-5 pt-12 flex-grow">
+        <li v-for="(item, index) in menu" :key="index">
+            <router-link :to="{ name: item.to }" class="flex gap-x-3 items-center group">
+                <component :is="item.icon" class="w-5 h-5 fill-current group-hover:text-blue-500" :class="{
+                'text-blue-500': $route.name === item.to,
+                'text-gray-400 ': $route.name !== item.to
+              }" />
+                <span v-if="isOpen"
+                    class="inline-block text-sm leading-6 group-hover:text-gray-800 group-hover:font-semibold" :class="{
+                'text-blue-500 font-semibold': $route.name === item.to,
+                'text-gray-600': $route.name !== item.to
+              }">
+                    {{ item.name }}
+                </span>
+            </router-link>
+        </li>
+    </ul>
+</aside>

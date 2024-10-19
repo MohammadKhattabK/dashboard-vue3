@@ -1,85 +1,88 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="flex h-screen bg-gray-100">
+    <Sidebar :isOpen="isSidebarOpen" @close-sidebar="isSidebarOpen = !isSidebarOpen" />
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <Navbar :hasScrolled="hasScrolled" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+      <main
+        ref="mainContent"
+        class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6"
+        @scroll="handleScroll"
+        :style="{ marginRight: isSidebarOpen ? '16rem' : '5rem' }"
+      >
+        <div class="container mx-auto">
+          
+          <Dashboard/>
+          <RouterView/>
+        </div>
+      </main>
     </div>
-  </header>
-
-  <RouterView />
+  </div> 
 </template>
 
+<script lang="ts" setup>
+import { onMounted, onUnmounted, ref, watch } from 'vue'
+import Sidebar from '@/components/sidebar/Sidebar.vue'
+import Navbar from '@/components/navbar/Navbar.vue'
+import Dashboard from '@/views/dashboard/Dashboard.vue'
+import { RouterView } from 'vue-router'
+
+const isSidebarOpen = ref(true)
+const hasScrolled = ref(false)
+const mainContent = ref<HTMLElement | null>(null)
+
+const handleScroll = () => {
+  if (mainContent.value) {
+    hasScrolled.value = mainContent.value.scrollTop > 50
+  }
+}
+
+onMounted(() => {
+  if (mainContent.value) {
+    mainContent.value.addEventListener('scroll', handleScroll)
+  }
+})
+
+onUnmounted(() => {
+  if (mainContent.value) {
+    mainContent.value.removeEventListener('scroll', handleScroll)
+  }
+})
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+
+const closeSidebar = () => {
+  isSidebarOpen.value = false
+}
+
+watch(isSidebarOpen, () => {
+  if (mainContent.value) {
+    mainContent.value.style.marginRight = isSidebarOpen.value ? '16rem' : '0'
+  }
+})
+ 
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.container {
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 </style>
