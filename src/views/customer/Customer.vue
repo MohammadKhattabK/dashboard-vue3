@@ -21,6 +21,17 @@ import ChevronRightIcon from '@/assets/icons/chevron-right.svg'
 import imageItem from '@/assets/img/background-login.jpg'
 
 import { ref } from 'vue'
+import DialogDelete from '@/components/dialogDelete/DialogDelete.vue'
+
+const showModal = ref(false)
+
+const openDeleteDialog = () => {
+  showModal.value = true
+}
+
+const closeDeleteDialog = () => {
+  showModal.value = false
+}
 
 const tabLabels = ['قائمة الزبائن', 'المدفوعات', 'المستحقات']
 

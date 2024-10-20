@@ -73,7 +73,7 @@
                                     <PencilIcon class="w-6 h-6 fill-current" />
                                 </button>
                                 <button class="p-2 hover:rounded-md hover:bg-gray-200">
-                                    <TrashIcon class="w-6 h-6 fill-current" />
+                                    <TrashIcon @click="openDeleteDialog" class="w-6 h-6 fill-current" />
                                 </button>
                             </div>
                         </td>
@@ -104,3 +104,5 @@
         المستحقات
     </div>
 </div>
+
+<DialogDelete :showModal="showModal" @close="closeDeleteDialog" />
