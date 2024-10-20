@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '@/views/dashboard/Dashboard.vue'
 import Customer from '@/views/customer/Customer.vue'
+import Profile from '@/components/profile/Profile.vue'
 
 const route = [
   {
@@ -8,6 +9,12 @@ const route = [
     name: 'Dashboard',
     component: Dashboard,
     meta: { title: 'لوحة التحكم' }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: { title: 'الملف الشخصي' }
   },
   {
     path: '/sales',
